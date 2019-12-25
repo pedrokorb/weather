@@ -1,26 +1,74 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Fragment, useState, useEffect } from 'react';
+import axios from 'axios';
 
 function App() {
-  return (
-    <div className="App" >
-      <div className="w-full max-w-md bg-gray-800" >
-        <form action="" className=" bg-white shadow-md rounded px-8 py-8 pt-8">
-          <div className="px-4 pb-4">
-            <label htmlFor="email" className="text-sm block font-bold  pb-2">EMAIL ADDRESS</label>
-            <input type="email" name="email" id="" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300 " placeholder="Johnbull@example.com" />
-          </div>
-          <div className="px-4 pb-4">
-            <label htmlFor="password" className="text-sm block font-bold pb-2">PASSWORD</label>
-            <input type="password" name="email" id="" className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline border-blue-300" placeholder="Enter your password" />
-          </div>
-          <div>
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">Sign In</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  );
+  const [location, setLocation] = useState(false);
+  const [weather, setWeather] = useState(false);
+
+  let getWeather = async (lat, long) => {
+    let key = process.env.REACT_APP_DARK_SKY_KEY
+    let proxy = 'https://cors-anywhere.herokuapp.com/';
+    let url = `https://api.darksky.net/forecast/${key}/${lat},${long}`
+    console.log(url)
+
+    let res = await axios.get(proxy+url, {
+      params: {
+        units: 'si'
+      }
+    });
+    setWeather(res.data);    
+  }
+  console.log(weather)
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      getWeather(position.coords.latitude, position.coords.longitude);
+      setLocation(true)
+    })
+  }, [])
+
+  if (!location) {
+    return (
+      <Fragment>
+        Você precisa habilitar a localização no browser o/
+      </Fragment>
+    )
+  } else if (!weather){
+    return(
+      <Fragment>
+        Carregando...
+      </Fragment>
+    )  
+  } else {
+    return (
+      <Fragment>
+        <p>
+          Temperatura do ar: 
+          <span className="text-4xl font-bold">
+            {weather.currently.temperature} °C
+          </span>
+        </p>
+        <p>
+          Umidade Relativa do ar: 
+          <span className="text-4xl font-bold">
+            {weather.currently.humidity}%
+          </span>
+        </p>
+        <p>
+          Velocidade do Vento: 
+          <span className="text-4xl font-bold">
+            {weather.currently.windSpeed}m/s
+          </span>
+        </p>
+        <p>Volume de Chuva (ver como calcular)</p>
+        <p>Data e hora da medição: 
+          <span className="text-4xl font-bold">
+            {weather.currently.time}
+          </span>
+        </p>
+        <p>Data e hora da última sincronização com a API Darksky</p>
+      </Fragment>
+    );
+  }
 }
 
 export default App;
