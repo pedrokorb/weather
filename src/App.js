@@ -2,28 +2,31 @@ import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 import Moment from 'react-moment';
 import 'moment-timezone';
-import { convertUnixToTimestamp } from "./Utils"
+import { convertUnixToTimestamp, isFifteenMinutesDifferent } from "./Utils"
 
 function App() {
   const [location, setLocation] = useState(false);
   const [weather, setWeather] = useState(false);
   const [lastSync, setLastSync] = useLocalStorage('lastSync', Date.now())
 
-  let getWeather = async (lat, long) => {
-    let key = process.env.REACT_APP_DARK_SKY_KEY
-    let proxy = 'https://cors-anywhere.herokuapp.com/';
-    let url = `https://api.darksky.net/forecast/${key}/${lat},${long}`
-    console.log(url)
+  // if (isFifteenMinutesDifferent(weather.currently.time, lastSync / 1000) >= 15){
+    let getWeather = async (lat, long) => {
+      let key = process.env.REACT_APP_DARK_SKY_KEY
+      let proxy = 'https://cors-anywhere.herokuapp.com/';
+      let url = `https://api.darksky.net/forecast/${key}/${lat},${long}`
+      console.log(url)
 
-    let res = await axios.get(proxy+url, {
-      params: {
-        units: 'si'
-      }
-    });
-    setWeather(res.data);
-    setLastSync(Date.now())    
-  }
-  console.log(weather)
+      let res = await axios.get(proxy + url, {
+        params: {
+          units: 'si'
+        }
+      });
+      setWeather(res.data);
+      setLastSync(Date.now())
+    }
+    console.log(weather)
+  // }
+  
   
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -113,6 +116,8 @@ function App() {
           value={lastSync}
           onChange={e => setLastSync(e.target.value)}
         />
+
+        <p>{isFifteenMinutesDifferent(weather.currently.time, lastSync/1000)}</p>
       </Fragment>
     );
   }
