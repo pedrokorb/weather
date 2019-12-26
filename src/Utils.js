@@ -26,11 +26,11 @@ export function isFifteenMinutesDifferent(dateA, dateB) {
   var hourB = b.getHours();
   var minB = b.getMinutes();
   
-  var diffYear = (yearB-yearA)*525600 //minutes in each year
+  var diffYear = (yearB - yearA)*525600 //minutes in each year
   var diffMonth = (monthB - monthA) * 43800 //minutes in each month
-  var diffDay = (dayB-dayA)*1440 //minutes in each day
-  var diffHour = (hourB-hourA)*60 // minutes in each hour
-  var diffMin = (minB-minA)
+  var diffDay = (dayB - dayA)*1440 //minutes in each day
+  var diffHour = (hourB - hourA)*60 // minutes in each hour
+  var diffMin = (minB - minA)
 
   var differenceInMinutes = diffYear+diffMonth+diffDay+diffHour+diffMin
 
