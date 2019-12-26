@@ -7,30 +7,37 @@ import { convertUnixToTimestamp, isFifteenMinutesDifferent } from "./Utils"
 function App() {
   const [location, setLocation] = useState(false);
   const [weather, setWeather] = useState(false);
-  const [lastSync, setLastSync] = useLocalStorage('lastSync', Date.now())
+  const [lastSync, setLastSync] = useLocalStorage('lastSync', false)
+  const [storeWeather, setStoreWeather] = useLocalStorage('storeWeather', false)
 
-  // if (isFifteenMinutesDifferent(weather.currently.time, lastSync / 1000) >= 15){
+  // if(!storeWeather){
     let getWeather = async (lat, long) => {
       let key = process.env.REACT_APP_DARK_SKY_KEY
       let proxy = 'https://cors-anywhere.herokuapp.com/';
       let url = `https://api.darksky.net/forecast/${key}/${lat},${long}`
-      console.log(url)
 
       let res = await axios.get(proxy + url, {
         params: {
           units: 'si'
         }
       });
-      setWeather(res.data);
+      console.log("FIZ UMA REQUISIÇÂO")
+      // setWeather(res.data);
+      setStoreWeather(res.data);
       setLastSync(Date.now())
     }
-    console.log(weather)
-  // }
-  
+  // } 
   
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
-      getWeather(position.coords.latitude, position.coords.longitude);
+      if(!storeWeather){
+        getWeather(position.coords.latitude, position.coords.longitude);
+      } else if (isFifteenMinutesDifferent(lastSync/1000, Date.now()/1000)){
+        getWeather(position.coords.latitude, position.coords.longitude);
+      } else {
+        setWeather(storeWeather)
+      }
+
       setLocation(true)
     })
   }, [])
@@ -117,7 +124,6 @@ function App() {
           onChange={e => setLastSync(e.target.value)}
         />
 
-        <p>{isFifteenMinutesDifferent(weather.currently.time, lastSync/1000)}</p>
       </Fragment>
     );
   }
