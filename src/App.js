@@ -3,6 +3,7 @@ import axios from 'axios';
 import Moment from 'react-moment';
 import 'moment-timezone';
 import { convertUnixToTimestamp, isFifteenMinutesDifferent } from "./Utils"
+import BlockCard from './components/BlockCard';
 
 function App() {
   const [location, setLocation] = useState(false);
@@ -120,6 +121,8 @@ function App() {
           value={lastSync}
           onChange={e => setLastSync(e.target.value)}
         />
+
+        <BlockCard />
 
       </Fragment>
     );
