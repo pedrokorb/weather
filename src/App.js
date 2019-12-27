@@ -80,30 +80,7 @@ function App() {
   } else {
     return (
       <Fragment>
-        <p>
-          Temperatura do ar:&nbsp;
-          <span className="text-4xl font-bold">
-            {weather.currently.temperature.toFixed(1)} °C
-          </span>
-        </p>
-        <p>
-          Umidade Relativa do ar:&nbsp;
-          <span className="text-4xl font-bold">
-            {weather.currently.humidity.toFixed(1)}%
-          </span>
-        </p>
-        <p>
-          Velocidade do Vento:&nbsp;
-          <span className="text-4xl font-bold">
-            {weather.currently.windSpeed.toFixed(0)} m/s
-          </span>
-        </p>
-        <p>Volume de Chuva:&nbsp;
-          <span className="text-4xl font-bold">
-            {weather.currently.precipIntensity.toFixed(1)} mm
-          </span>
-          &nbsp;na última hora
-        </p>
+      
         <p>Data e hora da medição:&nbsp; 
           <span className="text-4xl font-bold">
             {convertUnixToTimestamp(weather.currently.time)}
@@ -122,11 +99,50 @@ function App() {
           onChange={e => setLastSync(e.target.value)}
         />
 
-        <BlockCard />
+        <BlockCard
+          metric={weather.currently.temperature.toFixed(1)}
+          unit="°C"
+          description="Temperatura do ar"
+        />
+
+        <BlockCard
+          metric={weather.currently.humidity.toFixed(1)}
+          unit="%"
+          description="Umidade Relativa do ar"
+        />
+
+        <BlockCard
+          metric={weather.currently.windSpeed.toFixed(0)}
+          unit="m/s"
+          description="Velocidade do vento"
+        />
+
+        <BlockCard
+          metric={weather.currently.precipIntensity.toFixed(1)}
+          unit="mm"
+          description="Volume de chuva na última hora"
+        />
 
       </Fragment>
     );
   }
+
+
+  // return (
+  //   <div className="container mx-auto p-3 text-white">
+  //     <div className="home_page-header-card-list">
+  //       <BlockCard 
+  //         metric={weather.currently.temperature.toFixed(1)}
+  //         unit="°C"
+  //         description="Temperatura do ar"
+  //       />
+  //       {/* <BlockCard />
+  //       <BlockCard /> */}
+  //     </div>
+  //   </div>
+    
+    
+  // )
 }
 
 export default App;
