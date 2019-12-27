@@ -10,23 +10,20 @@ function App() {
   const [lastSync, setLastSync] = useLocalStorage('lastSync', false)
   const [storeWeather, setStoreWeather] = useLocalStorage('storeWeather', false)
 
-  // if(!storeWeather){
-    let getWeather = async (lat, long) => {
-      let key = process.env.REACT_APP_DARK_SKY_KEY
-      let proxy = 'https://cors-anywhere.herokuapp.com/';
-      let url = `https://api.darksky.net/forecast/${key}/${lat},${long}`
+  let getWeather = async (lat, long) => {
+    let key = process.env.REACT_APP_DARK_SKY_KEY
+    let proxy = 'https://cors-anywhere.herokuapp.com/';
+    let url = `https://api.darksky.net/forecast/${key}/${lat},${long}`
 
-      let res = await axios.get(proxy + url, {
-        params: {
-          units: 'si'
-        }
-      });
-      console.log("FIZ UMA REQUISIÇÂO")
-      // setWeather(res.data);
-      setStoreWeather(res.data);
-      setLastSync(Date.now())
-    }
-  // } 
+    let res = await axios.get(proxy + url, {
+      params: {
+        units: 'si'
+      }
+    });
+    setWeather(res.data);
+    setStoreWeather(res.data);
+    setLastSync(Date.now())
+  }
   
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -70,7 +67,7 @@ function App() {
   if (!location) {
     return (
       <Fragment>
-        Você precisa habilitar a localização no browser o/
+        Você precisa habilitar a localização no browser
       </Fragment>
     )
   } else if (!weather){
@@ -102,7 +99,7 @@ function App() {
         </p>
         <p>Volume de Chuva:&nbsp;
           <span className="text-4xl font-bold">
-            {weather.currently.precipIntensity} mm
+            {weather.currently.precipIntensity.toFixed(1)} mm
           </span>
           &nbsp;na última hora
         </p>
