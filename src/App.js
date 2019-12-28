@@ -95,6 +95,7 @@ function App() {
           />
 
           <BlockCard
+            loading={!weather}
             metric={weather.currently.windSpeed.toFixed(0)}
             unit="m/s"
             description="Velocidade do vento"

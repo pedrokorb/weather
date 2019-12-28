@@ -11,8 +11,9 @@ export default class BlockCard extends Component {
       <div 
         className="block-card p-8 bg-gray-700 opacity-25 rounded-lg shadow text-gray-300 lg:hover:z-10 lg:hover:scale-110"
       >
-        <div className="flex pb-3 mb-3 border-b border-gray-custom-200">
+        <div className="flex justify-between items-baseline pb-3 mb-3 border-b border-gray-custom-200">
           <div className="flex flex-row items-baseline">
+
             <p className="text-4xl font-bold">
               {this.props.metric}
             </p>
@@ -21,6 +22,8 @@ export default class BlockCard extends Component {
               &nbsp;{this.props.unit}
             </p>
           </div>
+
+          <p>Aqui vai o icone</p>
         </div>
         <p>
           {this.props.description}

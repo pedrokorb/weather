@@ -4,6 +4,7 @@
 
 @tailwind utilities;
 
+/* @import "./components/card"; */
 .card-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
