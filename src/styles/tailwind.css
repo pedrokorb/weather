@@ -11387,6 +11387,20 @@ video {
   z-index: auto;
 }
 
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 0.75rem;
+}
+
+@media (min-width: 1024px) {
+  .card-list {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;
@@ -54432,20 +54446,5 @@ video {
 
   .xl\:z-auto {
     z-index: auto;
-  }
-}
-
-/* card-list */
-.card-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-gap: 0.75rem;
-}
-
-@media (min-width: 1024px) {
-  .card-list {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr;
   }
 }
