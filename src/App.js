@@ -81,7 +81,7 @@ function App() {
     return (
       <div className="container mx-auto p-3 mt-64">
         <section className="card-list">
-      
+
           <BlockCard
             icon="Temperature"
             metric={weather.currently.temperature.toFixed(1)}
@@ -110,8 +110,15 @@ function App() {
             description="Volume de chuva na última hora"
           />
 
-        </section>  
+        </section> 
+        
+        <p className="text-sm text-gray-700 mt-2">
+          Última medição: {convertUnixToTimestamp(weather.currently.time)}
+        </p>
 
+        <p className="text-sm text-gray-700 mt-1">
+          Última sincronização com a API Darksky: {convertUnixToTimestamp(lastSync/1000)}
+        </p>
 
       </div>
     );
