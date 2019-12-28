@@ -79,51 +79,37 @@ function App() {
     )  
   } else {
     return (
-      <Fragment>
+      <div className="container mx-auto p-3 mt-64">
+        <section className="card-list">
       
-        <p>Data e hora da medição:&nbsp; 
-          <span className="text-4xl font-bold">
-            {convertUnixToTimestamp(weather.currently.time)}
-          </span>
-        </p>
-        <p>Data e hora da última sincronização com a API Darksky:&nbsp;
-          <span className="text-4xl font-bold">
-            {convertUnixToTimestamp(lastSync/1000)}
-          </span>
-        </p>
+          <BlockCard
+            metric={weather.currently.temperature.toFixed(1)}
+            unit="°C"
+            description="Temperatura do ar"
+          />
 
-        <input
-          type="text"
-          placeholder="Enter your name"
-          value={lastSync}
-          onChange={e => setLastSync(e.target.value)}
-        />
+          <BlockCard
+            metric={weather.currently.humidity.toFixed(1)}
+            unit="%"
+            description="Umidade Relativa do ar"
+          />
 
-        <BlockCard
-          metric={weather.currently.temperature.toFixed(1)}
-          unit="°C"
-          description="Temperatura do ar"
-        />
+          <BlockCard
+            metric={weather.currently.windSpeed.toFixed(0)}
+            unit="m/s"
+            description="Velocidade do vento"
+          />
 
-        <BlockCard
-          metric={weather.currently.humidity.toFixed(1)}
-          unit="%"
-          description="Umidade Relativa do ar"
-        />
+          <BlockCard
+            metric={weather.currently.precipIntensity.toFixed(1)}
+            unit="mm"
+            description="Volume de chuva na última hora"
+          />
 
-        <BlockCard
-          metric={weather.currently.windSpeed.toFixed(0)}
-          unit="m/s"
-          description="Velocidade do vento"
-        />
+        </section>  
 
-        <BlockCard
-          metric={weather.currently.precipIntensity.toFixed(1)}
-          unit="mm"
-          description="Volume de chuva na última hora"
-        />
 
-      </Fragment>
+      </div>
     );
   }
 
