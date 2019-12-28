@@ -1,9 +1,33 @@
 import React, { Component } from 'react';
+import Rain from '../assets/svgs/rain.svg'
+import Humidity from '../assets/svgs/humidity.svg'
+import Temperature from '../assets/svgs/temperature.svg'
+import Wind from '../assets/svgs/wind.svg'
+
 
 export default class BlockCard extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  setIcon(icon){
+    switch (icon) {
+      case 'Rain':
+        return Rain;
+        break;
+      case 'Temperature':
+        return Temperature;
+        break;
+      case 'Humidity':
+        return Humidity;
+        break;
+      case 'Wind':
+        return Wind;
+        break;
+      default:
+        console.log('Sorry, we are out of ' + icon + '.');
+    }
   }
   
   render() {
@@ -23,7 +47,10 @@ export default class BlockCard extends Component {
             </p>
           </div>
 
-          <p>Aqui vai o icone</p>
+          <img 
+            src={this.setIcon(this.props.icon)} 
+            className="w-12 h-12 text-white" 
+          />          
         </div>
         <p>
           {this.props.description}

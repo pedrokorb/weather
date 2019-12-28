@@ -83,25 +83,28 @@ function App() {
         <section className="card-list">
       
           <BlockCard
+            icon="Temperature"
             metric={weather.currently.temperature.toFixed(1)}
             unit="°C"
             description="Temperatura do ar"
           />
 
           <BlockCard
+            icon="Humidity"
             metric={weather.currently.humidity.toFixed(1)}
             unit="%"
             description="Umidade Relativa do ar"
           />
 
           <BlockCard
-            loading={!weather}
+            icon="Wind"
             metric={weather.currently.windSpeed.toFixed(0)}
             unit="m/s"
             description="Velocidade do vento"
           />
 
           <BlockCard
+            icon="Rain"
             metric={weather.currently.precipIntensity.toFixed(1)}
             unit="mm"
             description="Volume de chuva na última hora"
