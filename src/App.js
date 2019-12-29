@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
 import 'moment-timezone';
-import { convertUnixToTimestamp, isFifteenMinutesDifferent } from "./Utils"
+import { convertUnixToTimestamp, isFifteenMinutesDifferent, setBgClass } from "./Utils"
+// Components
 import BlockCard from './components/BlockCard';
 import CityInfo from './components/CityInfo';
 
@@ -79,7 +80,7 @@ function App() {
     )  
   } else {
     return (
-      <div className="bg-gradient-blue">
+      <div className={setBgClass(weather.currently.icon)}>
         <div
           className="container mx-auto p-3"
         >
@@ -91,6 +92,7 @@ function App() {
           <section className="card-list mt-24">
 
             <BlockCard
+              condition={weather.currently.icon}
               icon="Temperature"
               metric={weather.currently.temperature.toFixed(1)}
               unit="°C"
@@ -98,6 +100,7 @@ function App() {
             />
 
             <BlockCard
+              condition={weather.currently.icon}
               icon="Humidity"
               metric={weather.currently.humidity.toFixed(1)}
               unit="%"
@@ -105,6 +108,7 @@ function App() {
             />
 
             <BlockCard
+              condition={weather.currently.icon}
               icon="Wind"
               metric={weather.currently.windSpeed.toFixed(0)}
               unit="m/s"
@@ -112,6 +116,7 @@ function App() {
             />
 
             <BlockCard
+              condition={weather.currently.icon}
               icon="Rain"
               metric={weather.currently.precipIntensity.toFixed(1)}
               unit="mm"

@@ -1,3 +1,19 @@
+import ClearDay from './assets/svgs/clear-day.svg'
+import ClearNight from './assets/svgs/clear-night.svg'
+import Rain2 from './assets/svgs/rain2.svg'
+import Snow from './assets/svgs/snow.svg'
+import Sleet from './assets/svgs/sleet.svg'
+import Wind2 from './assets/svgs/wind2.svg'
+import Fog from './assets/svgs/fog.svg'
+import Cloudy from './assets/svgs/cloudy.svg'
+import PartlyCloudyDay from './assets/svgs/partly-cloudy-day.svg'
+import PartlyCloudyNight from './assets/svgs/partly-cloudy-night.svg'
+
+import Rain from './assets/svgs/rain.svg'
+import Humidity from './assets/svgs/humidity.svg'
+import Temperature from './assets/svgs/temperature.svg'
+import Wind from './assets/svgs/wind.svg'
+
 export function convertUnixToTimestamp(UNIX_timestamp) {
   var a = new Date(UNIX_timestamp * 1000);
   var months = ['Janeiro',
@@ -56,5 +72,107 @@ export function isFifteenMinutesDifferent(dateA, dateB) {
     return false
   } else {
     return true
+  }
+}
+
+export function setCondition(condition) {
+  switch (condition) {
+    case 'clear-day':
+      return "Céu Limpo";
+      break;
+    case 'clear-night':
+      return "Céu Limpo";
+      break;
+    case 'rain':
+      return "Chuva";
+      break;
+    case 'snow':
+      return "Neve";
+      break;
+    case 'sleet':
+      return "Granizo";
+      break;
+    case 'wind':
+      return "Vento";
+      break;
+    case 'fog':
+      return "Neblina";
+      break;
+    case 'cloudy':
+      return "Nublado";
+      break;
+    case 'partly-cloudy-day':
+      return "Parcialmente Nublado";
+      break;
+    case 'partly-cloudy-night':
+      return "Parcialmente Nublado";
+      break;
+    default:
+      console.log('Sorry, we are out of ' + condition + '.');
+  }
+}
+
+export function setIcon(icon) {
+  switch (icon) {
+    case 'clear-day':
+      return ClearDay;
+      break;
+    case 'clear-night':
+      return ClearNight;
+      break;
+    case 'rain':
+      return Rain2;
+      break;
+    case 'snow':
+      return Snow;
+      break;
+    case 'sleet':
+      return Sleet;
+      break;
+    case 'wind':
+      return Wind2;
+      break;
+    case 'fog':
+      return Fog;
+      break;
+    case 'cloudy':
+      return Cloudy;
+      break;
+    case 'partly-cloudy-day':
+      return PartlyCloudyDay;
+      break;
+    case 'partly-cloudy-night':
+      return PartlyCloudyNight;
+      break;
+    case 'Rain':
+      return Rain;
+      break;
+    case 'Temperature':
+      return Temperature;
+      break;
+    case 'Humidity':
+      return Humidity;
+      break;
+    case 'Wind':
+      return Wind;
+      break;
+    default:
+      console.log('Sorry, we are out of ' + icon + '.');
+  }
+}
+
+export function setBgClass(condition){
+  if(condition === 'clear-day'){
+    return 'bg-gradient-blue'
+  } else {
+    return 'bg-gradient-dark'
+  }
+}
+
+export function setBgCardClass(condition) {
+  if (condition === 'clear-day') {
+    return 'block-card p-8 bg-blue-500 rounded-lg shadow text-gray-300'
+  } else {
+    return 'block-card p-8 bg-gray-600 rounded-lg shadow text-gray-300'
   }
 }
