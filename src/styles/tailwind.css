@@ -11403,6 +11403,16 @@ video {
   }
 }
 
+.bg-gradient-blue{
+  background: -webkit-gradient(linear, left top, left bottom, from(#3182ce), to(rgba(252, 241, 232, 0)));
+  background: linear-gradient(to bottom, #3182ce 0%, rgba(252, 241, 232, 0) 100%);
+}
+
+.bg-gradient-dark{
+  background: -webkit-gradient(linear, left top, left bottom, from(#2d3748), to(rgba(252, 241, 232, 0)));
+  background: linear-gradient(to bottom, #2d3748 0%, rgba(252, 241, 232, 0) 100%);
+}
+
 @media (min-width: 640px) {
   .sm\:sr-only {
     position: absolute;

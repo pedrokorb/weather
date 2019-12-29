@@ -1,9 +1,9 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import axios from 'axios';
-import Moment from 'react-moment';
 import 'moment-timezone';
 import { convertUnixToTimestamp, isFifteenMinutesDifferent } from "./Utils"
 import BlockCard from './components/BlockCard';
+import CityInfo from './components/CityInfo';
 
 function App() {
   const [location, setLocation] = useState(false);
@@ -79,67 +79,66 @@ function App() {
     )  
   } else {
     return (
-      <div className="container mx-auto p-3 mt-64">
-        <section className="card-list">
+      <div className="bg-gradient-blue">
+        <div
+          className="container mx-auto p-3"
+        >
 
-          <BlockCard
-            icon="Temperature"
-            metric={weather.currently.temperature.toFixed(1)}
-            unit="°C"
-            description="Temperatura do ar"
+          <CityInfo 
+            icon={weather.currently.icon}
           />
-
-          <BlockCard
-            icon="Humidity"
-            metric={weather.currently.humidity.toFixed(1)}
-            unit="%"
-            description="Umidade Relativa do ar"
-          />
-
-          <BlockCard
-            icon="Wind"
-            metric={weather.currently.windSpeed.toFixed(0)}
-            unit="m/s"
-            description="Velocidade do vento"
-          />
-
-          <BlockCard
-            icon="Rain"
-            metric={weather.currently.precipIntensity.toFixed(1)}
-            unit="mm"
-            description="Volume de chuva na última hora"
-          />
-
-        </section> 
         
-        <p className="text-sm text-gray-700 mt-2">
-          Última medição: {convertUnixToTimestamp(weather.currently.time)}
-        </p>
+          <section className="card-list mt-24">
 
-        <p className="text-sm text-gray-700 mt-1">
-          Última sincronização com a API Darksky: {convertUnixToTimestamp(lastSync/1000)}
-        </p>
+            <BlockCard
+              icon="Temperature"
+              metric={weather.currently.temperature.toFixed(1)}
+              unit="°C"
+              description="Temperatura do ar"
+            />
 
+            <BlockCard
+              icon="Humidity"
+              metric={weather.currently.humidity.toFixed(1)}
+              unit="%"
+              description="Umidade Relativa do ar"
+            />
+
+            <BlockCard
+              icon="Wind"
+              metric={weather.currently.windSpeed.toFixed(0)}
+              unit="m/s"
+              description="Velocidade do vento"
+            />
+
+            <BlockCard
+              icon="Rain"
+              metric={weather.currently.precipIntensity.toFixed(1)}
+              unit="mm"
+              description="Volume de chuva na última hora"
+            />
+
+          </section>
+
+          <p className="text-sm text-gray-700 mt-2">
+            Última medição: {convertUnixToTimestamp(weather.currently.time)}
+          </p>
+
+          <p className="text-sm text-gray-700 mt-1">
+            Última sincronização com a API: {convertUnixToTimestamp(lastSync / 1000)}
+          </p>
+
+          <a
+            className="text-sm text-gray-700 mt-1" 
+            href="https://darksky.net/poweredby/"
+          >
+            Powered By Dark Sky
+          </a>
+
+        </div>
       </div>
     );
   }
-
-
-  // return (
-  //   <div className="container mx-auto p-3 text-white">
-  //     <div className="home_page-header-card-list">
-  //       <BlockCard 
-  //         metric={weather.currently.temperature.toFixed(1)}
-  //         unit="°C"
-  //         description="Temperatura do ar"
-  //       />
-  //       {/* <BlockCard />
-  //       <BlockCard /> */}
-  //     </div>
-  //   </div>
-    
-    
-  // )
 }
 
 export default App;

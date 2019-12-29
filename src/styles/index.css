@@ -18,3 +18,11 @@
     grid-template-rows: 1fr;
   }
 }
+
+.bg-gradient-blue{
+  background: linear-gradient(to bottom, #3182ce 0%, rgba(252, 241, 232, 0) 100%);
+}
+
+.bg-gradient-dark{
+  background: linear-gradient(to bottom, #2d3748 0%, rgba(252, 241, 232, 0) 100%);
+}

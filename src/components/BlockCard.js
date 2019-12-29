@@ -33,7 +33,7 @@ export default class BlockCard extends Component {
   render() {
     return (
       <div 
-        className="block-card p-8 bg-gray-700 opacity-25 rounded-lg shadow text-gray-300 lg:hover:z-10 lg:hover:scale-110"
+        className="block-card p-8 bg-blue-500 rounded-lg shadow text-gray-300 lg:hover:z-10 lg:hover:scale-110"
       >
         <div className="flex justify-between items-baseline pb-3 mb-3 border-b border-gray-custom-200">
           <div className="flex flex-row items-baseline">
