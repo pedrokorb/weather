@@ -1,68 +1,10 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Real Time Weather
+Esta aplicação tem por objetivo mostrar ao usuário informações em tempo real, de temperatura do ar, umidade relativa do ar, velocidade do vento e volume de chuva na última hora, com relação à localização atual do usuário. Foi construida utilizando a biblioteca [React](https://pt-br.reactjs.org/), totalmente responsiva (mobile-first). Para tornar o desenvolvimento mais prático e rápido, foi utilizado o framework [Tailwind CSS](https://blog.logrocket.com/create-react-app-and-tailwindcss/). Para a obtenção dos dados a serem mostrados, foi utilizada a API [Darksky](https://darksky.net/dev/docs). Para estabelecer uma conexão HTTP com a API, foi utilizada a biblioteca [Axios](https://github.com/axios/axios), por já ter trabalhado com essa biblioteca no desenvolvimento com Vue js. Para algumas lógicas com datas e horas, foi utilizada a biblioteca [Moment](https://momentjs.com/). Para mostrar o nome da cidade do usuário na tela, foi utilizada a API do google [Geocode](https://developers.google.com/maps/documentation/geocoding/start). 
+## Usage
+Para que o sistema funcione conforme o esperado, é necessário que você crie um arquivo na raiz do projeto chamado `.env`. Nele devem conter as seguintes linhas: 
 
-## Available Scripts
+    REACT_APP_DARK_SKY_KEY=<your darksky secret key>
+    REACT_APP_GEOLOCATION_KEY=<your google geocode key>
+Nos campos seguidos por `<>` você deve inserir as respectivas chaves para acessar a API.
 
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+Você deve dar `npm install` para instalar todas as dependências necessárias e para rodar o projeto, deve dar o comando `npm run start`.
