@@ -9,7 +9,7 @@ Nos campos seguidos por `<>` você deve inserir as respectivas chaves para acess
 
 Você deve dar `npm install` para instalar todas as dependências necessárias e para rodar o projeto, deve dar o comando `npm run start`.
 ## Screenshots
-![Tempo nublado, desktop](https://drive.google.com/file/d/1GK6jBvQ0qsyzlITxAaUKfxfTpWy2dx4P/view?usp=sharing)
-![Céu limpo, desktop](https://drive.google.com/file/d/1Lc4IioId-coLNHBs75-09kf1jYfPPRQ_/view?usp=sharing)
-![Tempo nublado, mobile](https://drive.google.com/file/d/1hKlQ4eJ4EKsr7T27TKMvchGWEO-F91b7/view?usp=sharing)
-![Céu limpo, mobile](https://drive.google.com/file/d/1FZ1zJwvmX6jNN0ko4AKcPqjnv_jfYaqF/view?usp=sharing)
+![Tempo nublado, desktop](https://user-images.githubusercontent.com/29802533/71583609-f4267c00-2aed-11ea-87c8-7df272130892.png)
+![Céu limpo, desktop](https://user-images.githubusercontent.com/29802533/71583624-06081f00-2aee-11ea-990d-e6ccea3f5545.png)
+![Tempo nublado, mobile](https://user-images.githubusercontent.com/29802533/71583636-15876800-2aee-11ea-95e5-261133ca02ba.png)
+![Céu limpo, mobile](https://user-images.githubusercontent.com/29802533/71583645-2041fd00-2aee-11ea-8411-cc8b725c3307.png)

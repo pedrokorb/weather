@@ -99,6 +99,12 @@ function App() {
           className="container mx-auto p-3"
         >
 
+          <p>{console.log(weather.daily.data[0].temperatureHigh)}</p>
+          <p>{console.log(weather.daily.data[0].temperatureLow)}</p>
+          <p>{console.log(weather.daily.data[0].icon)}</p>
+
+          <p>{console.log(convertUnixToTimestamp(weather.daily.data[0].time))}</p>
+
           <CityInfo 
             icon={weather.currently.icon}
             cityName={storeCity}
