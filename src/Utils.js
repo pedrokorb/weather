@@ -75,66 +75,42 @@ export function isFifteenMinutesDifferent(dateA, dateB) {
   }
 }
 
-export function setCondition(condition) {
-  switch (condition) {
-    case 'clear-day':
-      return "Céu Limpo";
-    case 'clear-night':
-      return "Céu Limpo";
-    case 'rain':
-      return "Chuva";
-    case 'snow':
-      return "Neve";
-    case 'sleet':
-      return "Granizo";
-    case 'wind':
-      return "Vento";
-    case 'fog':
-      return "Neblina";
-    case 'cloudy':
-      return "Nuvens";
-    case 'partly-cloudy-day':
-      return "Parcialmente Nublado";
-    case 'partly-cloudy-night':
-      return "Parcialmente Nublado";
-    default:
-      console.log('Sorry, we are out of ' + condition + '.');
+export function setCondition(conditionName) {
+  const condition = {
+    'clear-day': () => "Céu Limpo",
+    'clear-night': () => "Céu Limpo",
+    'rain': () => "Chuva",
+    'snow': () => "Neve",
+    'sleet': () => "Granizo",
+    'wind': () => "Vento",
+    'fog': () => "Neblina",
+    'cloudy': () => "Nuvens",
+    'partly-cloudy-day': () => "Parcialmente Nublado",
+    'partly-cloudy-night': () => "Parcialmente Nublado",
+    'default': () => 'Sorry, we are out of ' + conditionName + '.'
   }
+  return (condition[conditionName] || condition['default'])();
 }
 
-export function setIcon(icon) {
-  switch (icon) {
-    case 'clear-day':
-      return ClearDay;
-    case 'clear-night':
-      return ClearNight;
-    case 'rain':
-      return Rain2;
-    case 'snow':
-      return Snow;
-    case 'sleet':
-      return Sleet;
-    case 'wind':
-      return Wind2;
-    case 'fog':
-      return Fog;
-    case 'cloudy':
-      return Cloudy;
-    case 'partly-cloudy-day':
-      return PartlyCloudyDay;
-    case 'partly-cloudy-night':
-      return PartlyCloudyNight;
-    case 'Rain':
-      return Rain;
-    case 'Temperature':
-      return Temperature;
-    case 'Humidity':
-      return Humidity;
-    case 'Wind':
-      return Wind;
-    default:
-      console.log('Sorry, we are out of ' + icon + '.');
+export function setIcon(iconName){
+  const icon = {
+    'clear-day': () => ClearDay,
+    'clear-night': () => ClearNight,
+    'rain': () => Rain2,
+    'snow': () => Snow,
+    'sleet': () => Sleet,
+    'wind': () => Wind2,
+    'fog': () => Fog,
+    'cloudy': () => Cloudy,
+    'partly-cloudy-day': () => PartlyCloudyDay,
+    'partly-cloudy-night': () => PartlyCloudyNight,
+    'Rain': () => Rain,
+    'Temperature': () => Temperature,
+    'Humidity': () => Humidity,
+    'Wind': () => Wind,
+    'default': () => 'Sorry, we are out of ' + iconName + '.'
   }
+  return (icon[iconName] || icon['default'])();
 }
 
 export function setBgClass(condition){
