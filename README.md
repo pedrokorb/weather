@@ -1,13 +1,13 @@
 ## Real Time Weather
-Esta aplicação tem por objetivo mostrar ao usuário informações em tempo real, de temperatura do ar, umidade relativa do ar, velocidade do vento e volume de chuva na última hora, com relação à localização atual do usuário. Conforme a condição climática, a cor de fundo dos elementos muda, para deixar o ambiente mais fiel. Foi construida utilizando a biblioteca [React](https://pt-br.reactjs.org/), totalmente responsiva (mobile-first). Para tornar o desenvolvimento mais prático e rápido, foi utilizado o framework [Tailwind CSS](https://blog.logrocket.com/create-react-app-and-tailwindcss/). Para a obtenção dos dados a serem mostrados, foi utilizada a API [Darksky](https://darksky.net/dev/docs). Para estabelecer uma conexão HTTP com a API, foi utilizada a biblioteca [Axios](https://github.com/axios/axios), por já ter trabalhado com essa biblioteca no desenvolvimento com Vue js. Para algumas lógicas com datas e horas, foi utilizada a biblioteca [Moment](https://momentjs.com/). Para mostrar o nome da cidade do usuário na tela, foi utilizada a API do google [Geocode](https://developers.google.com/maps/documentation/geocoding/start). 
+This application aims to show the user real time information of air temperature, relative humidity, wind speed and rainfall in the last hour, relative to the user's current location. Depending on the weather condition, the background color of the elements changes to make the environment more faithful. It was built using the fully responsive (mobile-first) library [React](https://pt-br.reactjs.org/). To make development more convenient and fast, we used the [Tailwind CSS](https://blog.logrocket.com/create-react-app-and-tailwindcss/) framework. To obtain the data to be shown, the [Darksky](https://darksky.net/dev/docs) API was used. To establish an HTTP connection to the API, we used the [Axios](https://github.com/axios/axios)library, as we have already worked with this library in development with Vue js. For some logics with dates and times, the [Moment](https://momentjs.com/) library was used. To show the user's city name on the screen, we used the Google [Geocode](https://developers.google.com/maps/documentation/geocoding/start) API. 
 ## Usage
-Para que o sistema funcione conforme o esperado, é necessário que você crie um arquivo na raiz do projeto chamado `.env`. Nele devem conter as seguintes linhas: 
+For the system to work as expected, you need to create a file at the root of the project called `.env`. It should contain the following lines: 
 
     REACT_APP_DARK_SKY_KEY=<your darksky secret key>
     REACT_APP_GEOLOCATION_KEY=<your google geocode key>
-Nos campos seguidos por `<>` você deve inserir as respectivas chaves para acessar a API.
+In the fields followed by `<>` you must enter their keys to access the API.
 
-Você deve dar `npm install` para instalar todas as dependências necessárias e para rodar o projeto, deve dar o comando `npm run start`.
+You must give `npm install` to install all necessary dependencies and to run the project, you must give the` npm run start` command.
 ## Screenshots
 ![Tempo nublado, desktop](https://user-images.githubusercontent.com/29802533/71583609-f4267c00-2aed-11ea-87c8-7df272130892.png)
 ![Céu limpo, desktop](https://user-images.githubusercontent.com/29802533/71583624-06081f00-2aee-11ea-990d-e6ccea3f5545.png)
