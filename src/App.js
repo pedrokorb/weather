@@ -86,7 +86,7 @@ function App() {
         Você precisa habilitar a localização no browser
       </Fragment>
     )
-  } else if (!weather && !storeCity){
+  } else if (!weather || !storeCity){
     return(
       <Fragment>
         Carregando...
