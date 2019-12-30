@@ -26,6 +26,7 @@ export default class BlockCard extends Component {
 
           <img 
             src={setIcon(this.props.icon)} 
+            alt={this.props.icon}
             className="w-12 h-12 text-white" 
           />          
         </div>

@@ -12,7 +12,7 @@ export default class CityInfo extends Component {
       <div className="mt-24 md:mr-10 flex flex-row items-start justify-end">
         <div className="text-white">
           <p className="text-5xl">
-            Santa Maria - RS
+            {this.props.cityName}
           </p>
           <p className="md:text-right">
             {setCondition(this.props.icon)}
@@ -21,6 +21,7 @@ export default class CityInfo extends Component {
 
         <img
           src={setIcon(this.props.icon)}
+          alt={this.props.icon}
           className="ml-5 w-24 h-24 text-white"
         />
       </div>

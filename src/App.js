@@ -9,6 +9,7 @@ import CityInfo from './components/CityInfo';
 function App() {
   const [location, setLocation] = useState(false);
   const [weather, setWeather] = useState(false);
+  const [storeCity, setStoreCity] = useLocalStorage('city', false)
   const [lastSync, setLastSync] = useLocalStorage('lastSync', false)
   const [storeWeather, setStoreWeather] = useLocalStorage('storeWeather', false)
 
@@ -26,13 +27,26 @@ function App() {
     setStoreWeather(res.data);
     setLastSync(Date.now())
   }
+
+  let getGeolocation = async (lat, long) => {
+    let key = process.env.REACT_APP_GEOLOCATION_KEY
+    let url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${long}&key=${key}`
+
+    let res = await axios.get(url);
+    let cityName = res.data.results[0].address_components[3].long_name + " - " + res.data.results[0].address_components[4].short_name
+ 
+    setStoreCity(cityName)
+  }
+
   
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
+    navigator.geolocation.getCurrentPosition((position) => {      
       if(!storeWeather){
         getWeather(position.coords.latitude, position.coords.longitude);
+        getGeolocation(position.coords.latitude, position.coords.longitude);
       } else if (isFifteenMinutesDifferent(lastSync/1000, Date.now()/1000)){
         getWeather(position.coords.latitude, position.coords.longitude);
+        getGeolocation(position.coords.latitude, position.coords.longitude);
       } else {
         setWeather(storeWeather)
       }
@@ -72,7 +86,7 @@ function App() {
         Você precisa habilitar a localização no browser
       </Fragment>
     )
-  } else if (!weather){
+  } else if (!weather && !storeCity){
     return(
       <Fragment>
         Carregando...
@@ -87,6 +101,7 @@ function App() {
 
           <CityInfo 
             icon={weather.currently.icon}
+            cityName={storeCity}
           />
         
           <section className="card-list mt-24">
@@ -137,7 +152,7 @@ function App() {
             className="text-sm text-gray-700 mt-1" 
             href="https://darksky.net/poweredby/"
           >
-            Powered By Dark Sky
+            Powered by Dark Sky
           </a>
 
         </div>

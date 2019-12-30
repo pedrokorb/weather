@@ -79,34 +79,24 @@ export function setCondition(condition) {
   switch (condition) {
     case 'clear-day':
       return "Céu Limpo";
-      break;
     case 'clear-night':
       return "Céu Limpo";
-      break;
     case 'rain':
       return "Chuva";
-      break;
     case 'snow':
       return "Neve";
-      break;
     case 'sleet':
       return "Granizo";
-      break;
     case 'wind':
       return "Vento";
-      break;
     case 'fog':
       return "Neblina";
-      break;
     case 'cloudy':
       return "Nublado";
-      break;
     case 'partly-cloudy-day':
       return "Parcialmente Nublado";
-      break;
     case 'partly-cloudy-night':
       return "Parcialmente Nublado";
-      break;
     default:
       console.log('Sorry, we are out of ' + condition + '.');
   }
@@ -116,46 +106,32 @@ export function setIcon(icon) {
   switch (icon) {
     case 'clear-day':
       return ClearDay;
-      break;
     case 'clear-night':
       return ClearNight;
-      break;
     case 'rain':
       return Rain2;
-      break;
     case 'snow':
       return Snow;
-      break;
     case 'sleet':
       return Sleet;
-      break;
     case 'wind':
       return Wind2;
-      break;
     case 'fog':
       return Fog;
-      break;
     case 'cloudy':
       return Cloudy;
-      break;
     case 'partly-cloudy-day':
       return PartlyCloudyDay;
-      break;
     case 'partly-cloudy-night':
       return PartlyCloudyNight;
-      break;
     case 'Rain':
       return Rain;
-      break;
     case 'Temperature':
       return Temperature;
-      break;
     case 'Humidity':
       return Humidity;
-      break;
     case 'Wind':
       return Wind;
-      break;
     default:
       console.log('Sorry, we are out of ' + icon + '.');
   }
