@@ -3,6 +3,8 @@ import axios from 'axios';
 import 'moment-timezone';
 import { convertUnixToTimestamp, isFifteenMinutesDifferent, setBgClass } from "./Utils"
 // Components
+import Loading from './components/helpers/Loading';
+import Location from './components/helpers/Location';
 import BlockCard from './components/BlockCard';
 import CityInfo from './components/CityInfo';
 
@@ -82,15 +84,11 @@ function App() {
 
   if (!location) {
     return (
-      <Fragment>
-        Você precisa habilitar a localização no browser
-      </Fragment>
+      <Location />
     )
   } else if (!weather || !storeCity){
     return(
-      <Fragment>
-        Carregando...
-      </Fragment>
+      <Loading />
     )  
   } else {
     return (
