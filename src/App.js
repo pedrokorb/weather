@@ -1,7 +1,12 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'moment-timezone';
-import { convertUnixToTimestamp, isFifteenMinutesDifferent, setBgClass } from "./Utils"
+import { 
+  convertUnixToTimestamp, 
+  isFifteenMinutesDifferent, 
+  setBgClass 
+  } from "./Utils"
+
 // Components
 import Loading from './components/helpers/Loading';
 import Location from './components/helpers/Location';
@@ -96,19 +101,12 @@ function App() {
         <div
           className="container mx-auto p-3"
         >
-
-          <p>{console.log(weather.daily.data[0].temperatureHigh)}</p>
-          <p>{console.log(weather.daily.data[0].temperatureLow)}</p>
-          <p>{console.log(weather.daily.data[0].icon)}</p>
-
-          <p>{console.log(convertUnixToTimestamp(weather.daily.data[0].time))}</p>
-
           <CityInfo 
             icon={weather.currently.icon}
             cityName={storeCity}
           />
-        
-          <section className="card-list mt-16 md:mt-24">
+
+          <section className="card-list mt-10 md:mt-16">
 
             <BlockCard
               condition={weather.currently.icon}
