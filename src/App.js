@@ -104,7 +104,7 @@ function App() {
             cityName={storeCity}
           />
         
-          <section className="card-list mt-24">
+          <section className="card-list mt-16 md:mt-24">
 
             <BlockCard
               condition={weather.currently.icon}

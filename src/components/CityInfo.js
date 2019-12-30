@@ -9,7 +9,7 @@ export default class CityInfo extends Component {
   
   render() {
     return (
-      <div className="mt-24 md:mr-10 flex flex-row items-start justify-end">
+      <div className="mt-16 md:mt-24 md:mr-10 flex flex-row items-start justify-end">
         <div className="text-white">
           <p className="text-5xl">
             {this.props.cityName}
