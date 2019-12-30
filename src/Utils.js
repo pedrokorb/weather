@@ -92,7 +92,7 @@ export function setCondition(condition) {
     case 'fog':
       return "Neblina";
     case 'cloudy':
-      return "Nublado";
+      return "Nuvens";
     case 'partly-cloudy-day':
       return "Parcialmente Nublado";
     case 'partly-cloudy-night':
@@ -138,7 +138,7 @@ export function setIcon(icon) {
 }
 
 export function setBgClass(condition){
-  if(condition === 'clear-day'){
+  if (condition === 'clear-day' || condition === 'cloudy'){
     return 'bg-gradient-blue'
   } else {
     return 'bg-gradient-dark'
@@ -146,7 +146,7 @@ export function setBgClass(condition){
 }
 
 export function setBgCardClass(condition) {
-  if (condition === 'clear-day') {
+  if (condition === 'clear-day' || condition === 'cloudy') {
     return 'block-card p-8 bg-blue-500 rounded-lg shadow text-gray-300'
   } else {
     return 'block-card p-8 bg-gray-600 rounded-lg shadow text-gray-300'
